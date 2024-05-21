@@ -14,12 +14,10 @@ def run_test():
     email_input = driver.find_element(By.NAME, "email")
     email_input.send_keys("test_email" + str(random_number) + "@example.com")
     time.sleep(2)
-    password_input = driver.find_element(By.NAME, "password")
-    password_input.send_keys(str(random_number))
 
     login_button = driver.find_element(By.XPATH, "//button[contains(text(),'Sign Up')]")
     login_button.click()
-    assert driver.current_url == "http://localhost:5000/login"
+    assert driver.current_url == "http://localhost:5000/signup", 'Password should not be empty'
     # Wait for a few seconds to see the result
     driver.implicitly_wait(5)
     time.sleep(2)
